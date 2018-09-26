@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Cat(name,color){
+      this.name=name;
+  　　this.color=color;
+  　}
+    var cat1 = new Cat("大毛","黄色");
+    var cat2 = new Cat("二毛","黑色");
+    alert(cat1.name); // 大毛
+    alert(cat1.color); // 黄色
+
+    alert(cat1.constructor == Cat); //true
+    alert(cat2.constructor == Cat); //true
+
+    alert(cat1 instanceof Cat); //true
+  　alert(cat2 instanceof Cat); //true
+  </script>
+</body>
+</html>
