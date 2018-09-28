@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button>点击</button>
+  <script type="text/javascript">
+    var button = document.getElementsByTagName('button')[0]
+    function Person(){
+
+    }
+    Person.prototype.fun = function() {
+      console.log(this)
+    }
+    var person = new Person()
+    console.log(person.__proto__ === Person.prototype)
+    button.onclick = function(){
+      console.log(this)
+      person.fun()
+    }
+  </script>
+</body>
+</html>

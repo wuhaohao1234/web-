@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+  // 第一版
+  Function.prototype.call2 = function(context) {
+      // 首先要获取调用call的函数，用this可以获取
+      context.fn = this;
+      context.fn();
+      delete context.fn;
+  }
+
+  // 测试一下
+  var foo = {
+      value: 1
+  };
+
+  function bar() {
+      console.log(this.value);
+  }
+
+  bar.call2(foo); // 1
+  </script>
+</body>
+</html>

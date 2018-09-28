@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+  Function.prototype.bind2 = function (context) {
+    var self = this;
+    return function () {
+        return self.call(context);
+    }
+  }
+  var foo = {
+    value:1
+  }
+  function bar(){
+    console.log(this.value)
+  }
+  var bindFoo = bar.bind2(foo)
+  bindFoo()
+  </script>
+</body>
+</html>

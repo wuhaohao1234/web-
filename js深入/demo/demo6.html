@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+  var data = [];
+
+  for (var i = 0; i < 3; i++) {
+    data[i] = (function(i){
+      return function abc(){
+        console.log(i)
+      }
+    })(i)
+  }
+  data[0]()
+  data[1]()
+  data[2]()
+
+  </script>
+</body>
+</html>
