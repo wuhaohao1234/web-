@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    #app{
+      height: 100px;
+      background: #f60;
+      font-size: 24px;
+      line-height: 100px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript">
+    let app = document.getElementById('app')
+    let i = 1
+    let getUserAction = ()=>{
+      i++;
+      app.innerHTML = i
+    }
+
+    function throttle(func, wait) {
+        var context, args;
+        var previous = 0;
+
+        return function() {
+            var now = +new Date();
+            context = this;
+            args = arguments;
+            if (now - previous > wait) {
+                func.apply(context, args);
+                previous = now;
+            }
+        }
+    }
+    app.addEventListener('mousemove',throttle(getUserAction,1000))
+  </script>
+</body>
+</html>
