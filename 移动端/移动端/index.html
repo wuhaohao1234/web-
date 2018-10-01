@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		((win,doc)=>{
+			let res = ()=>{
+				let width = doc.documentElement.clientWidth/16
+				doc.getElementsByTagName('html')[0].style.fontSize = width + 'px'
+			}
+			res()
+			win.onresize = ()=>{
+				res()
+			}
+		})(window,document)
+
+	</script>
+	
+	<link rel="stylesheet" href="./index.css">
+</head>
+<body>
+	<div class="box"></div>
+	<div class="link"></div>
+	<script>
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      height: 100%;
+    }
+    .left,.right{
+      float: left;
+    }
+    .left{
+      width: 20%;
+      height: 100%;
+      background: #f60;
+    }
+    .right{
+      width: 80%;
+      height: 100%;
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="left"></div>
+  <div class="right"></div>
+  <script type="text/javascript">
+    /*
+      一切以iphone6为例子
+      布局视口:980
+      视觉视口:375
+      元素宽度:20%，布局视口下:196
+      视觉视口:75
+      元素宽度:20%，布局视口下:784
+      视觉视口:300
+
+      当加入<meta name="viewport" content="width=device-width,initial-scale=1">后
+      布局视口=视觉视口
+    */
+    console.log(375 / 980 * 784)//300
+  </script>
+</body>
+</html>

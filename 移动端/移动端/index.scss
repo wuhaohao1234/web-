@@ -1,0 +1,20 @@
+@function nav($arg){
+	@return $arg/ 46.875 *1rem;
+}
+
+*{
+	margin:0;
+	padding:0;
+}
+
+.box{
+	width:nav(750);		
+	height:nav(750);
+	background:#ccc;
+}
+
+.link{
+	width:nav(200);
+	height:nav(200);
+	background:#000;
+}
