@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      width: 100px;
+      height: 100px;
+      background: #f60;
+      position: absolute;
+      top:0;
+      left:0;
+    }
+    .link{
+      width: 100px;
+      height: 100px;
+      background: #069;
+      position: absolute;
+      top:0;
+      left:0;
+    }
+    .box{
+      width: 100px;
+      height: 100px;
+      background: #0f0;
+      position: absolute;
+      top:0;
+      left:0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div class="link"></div>
+  <div class="box"></div>
+  <script type="text/javascript">
+
+    class Moov {
+      constructor(app) {
+        this.app = app
+      }
+      active() {
+        this.app.onmousedown = this.down.bind(this)
+      }
+      down(event){
+        this.relaX = event.clientX - this.app.offsetLeft
+        this.relaY = event.clientY - this.app.offsetTop
+        document.onmousemove = this.move.bind(this)
+      }
+      move(event){
+        this.app.style.left = event.clientX - this.relaX + 'px';
+        this.app.style.top = event.clientY - this.relaY + 'px';
+        document.onmouseup = this.up
+      }
+      up(event){
+        document.onmouseup = null
+        document.onmousemove = null
+      }
+    }
+    let app = document.getElementById('app')
+    let link = document.getElementsByClassName('link')[0]
+    let box = document.getElementsByClassName('box')[0]
+    let appS = new Moov(app)
+    appS.active()
+    let linkS = new Moov(link)
+    linkS.active()
+    let boxS = new Moov(box)
+    boxS.active()
+    // let relaX,relaY
+    // app.onmousedown = (event)=>{
+    //   relaX = event.clientX - app.offsetLeft;
+    //   relaY = event.clientY - app.offsetTop;
+    //   document.onmousemove = (event)=>{
+    //     app.style.left = event.clientX - relaX + 'px';
+    //     app.style.top = event.clientY - relaY + 'px';
+    //   }
+    //   document.onmouseup = (event)=>{
+    //
+    //     document.onmousemove = null;
+    //     document.onmouseup = null;
+    //   }
+    // }
+    // app.onmousedown = (event)=>{
+    //   x = event.offsetX
+    //   y = event.offsetY
+    //   app.onmousemove = (event)=>{
+    //
+    //     relaX = event.offsetX
+    //     relaY = event.offsetY
+    //     setX = app.offsetLeft
+    //     setY = app.offsetTop
+    //     console.log(setX,setY)
+    //     app.style.left = relaX-x + setX + 'px'
+    //     app.style.top = relaY-y + setY + 'px'
+    //   }
+    //   app.onmouseup = (event)=>{
+    //     app.onmousemove = null;
+    //     app.onmouseup = null;
+    //   }
+    // }
+  </script>
+</body>
+</html>

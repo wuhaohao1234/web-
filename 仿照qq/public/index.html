@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input placeholder="姓名" type="text">
+    <input placeholder="内容" type="text">
+    <button>发送</button>
+    <div class="item"></div>
+    <script>
+        let btn = document.getElementsByTagName('button')[0]
+        let inp = document.getElementsByTagName('input')
+        let ws = new WebSocket('ws:localhost:2333')
+        ws.onmessage = (e)=>{
+            
+            let p = document.createElement('p')
+            p.innerHTML = `
+                    姓名:${JSON.parse(e.data).name}
+                    <br>
+                    发送内容:${JSON.parse(e.data).text}
+                `
+            document.getElementsByClassName('item')[0].appendChild(p)
+        }
+        btn.onclick = ()=>{
+            ws.send(JSON.stringify({
+                'name': inp[0].value,
+                'text': inp[1].value
+            }))
+            ws.onmessage = (e)=>{
+                let p = document.createElement('p')
+                p.innerHTML = `
+                    姓名:${JSON.parse(e.data).name}
+                    <br>
+                    发送内容:${JSON.parse(e.data).text}
+                `
+                document.getElementsByClassName('item')[0].appendChild(p)
+                
+            }
+        }
+    </script>
+</body>
+</html>

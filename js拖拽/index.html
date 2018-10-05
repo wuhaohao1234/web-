@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      width: 100px;
+      height: 100px;
+      background: #f99;
+      position: absolute;
+      top:100px;
+      left:100px;
+    }
+    .app{
+      width: 100px;
+      height: 100px;
+      background: #99f;
+      position: absolute;
+      top:100px;
+      left:100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <div class="app"></div>
+  <script type="text/javascript">
+    function Moov(app) {
+      this.app = app
+    }
+    Moov.prototype = {
+      active : function() {
+        this.app.onmousedown = this.down.bind(this)
+      },
+      down : function(event) {
+        this.relaX = event.clientX - this.app.offsetLeft
+        this.relaY = event.clientY - this.app.offsetTop
+        document.onmousemove = this.move.bind(this)
+      },
+      move : function(event) {
+        this.moveX = event.clientX - this.relaX
+        this.moveY = event.clientY- this.relaY
+        this.app.style.left = this.moveX + 'px'
+        this.app.style.top = this.moveY + 'px'
+        // console.log(this.app.offsetLeft)
+        this.disable()
+        document.onmouseup = this.up.bind(this)
+      },
+      disable() {
+        if(this.app.offsetLeft < 25){
+          this.app.style.left = 0
+        }
+        if(this.app.offsetTop < 25){
+          this.app.style.top = 0
+        }
+        if((-this.app.offsetLeft + document.documentElement.clientWidth - this.app.clientWidth) < 25){
+          this.app.style.left = document.documentElement.clientWidth - this.app.clientWidth + 'px'
+        }
+        if((-this.app.offsetTop + document.documentElement.clientHeight - this.app.clientHeight) < 25){
+          this.app.style.top = document.documentElement.clientHeight - this.app.clientHeight + 'px'
+        }
+      },
+      up : function(event) {
+        document.onmousemove = null
+        document.onmouseup = null
+      }
+    }
+
+    var box = document.getElementsByClassName('box')[0]
+    var boxS = new Moov(box)
+    boxS.active()
+
+    var app = document.getElementsByClassName('app')[0]
+    var appS = new Moov(app)
+    appS.active()
+    /*
+    box.onmousedown = function(event) {
+      var relaX = event.clientX - box.offsetLeft
+      var relaY = event.clientY - box.offsetTop
+      document.onmousemove = function(event) {
+        box.style.left = event.clientX - relaX + 'px'
+        box.style.top = event.clientY- relaY + 'px'
+        document.onmouseup = function(event) {
+          document.onmouseup = null
+          document.onmousemove = null
+        }
+      }
+    }
+    */
+
+  </script>
+</body>
+</html>
