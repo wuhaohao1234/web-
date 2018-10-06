@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js实现深浅拷贝</title>
+</head>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		// initalObj需要被拷贝的对象，finalObj新的对象
+		function deepClone(initalObj,finalObj){
+			var obj = finalObj || {}
+			for(var i in initalObj) {
+				// var prop = initalObj[i] //prop就是initalObj里面的每一个属性
+				if(prop === obj) {
+					continue;
+				}
+				if(typeof prop === 'Object') {
+					obj[i] = (prop.constructor === Array) ? [] : {};
+					deepClone(prop, obj[i])
+					// arguments.callee(prop, obj[i]);
+				}else{
+					obj[i] = prop;
+				}
+			}
+			return obj;
+		}
+		
+		// function deepClone(initalObj, finalObj) {    
+		//   var obj = finalObj || {};    
+		//   for (var i in initalObj) {        
+		//     var prop = initalObj[i];        // 避免相互引用对象导致死循环，如initalObj.a = initalObj的情况
+		//     if(prop === obj) {            
+		//       continue;
+		//     }        
+		//     if (typeof prop === 'object') {
+		//       obj[i] = (prop.constructor === Array) ? [] : Object.create(prop);
+		//     } else {
+		//       obj[i] = prop;
+		//     }
+		//   }    
+		//   return obj;
+		// }
+		// var obj1 = {
+		// 	a : {
+		// 		d : 3
+		// 	},
+		// 	b : 2,
+		// 	c : function() {
+		// 		console.log(1)
+		// 	}
+		// }
+		// var obj2 = {}
+		// obj2 = deepClone(obj1,obj2)
+		// console.log(obj2)
+		var obj1 = {
+			a : {
+				d : 3
+			},
+			b : 4,
+			c : 5
+		}
+		var obj2 = $.extend(true,{},obj1);
+		console.log(obj2)
+	</script>
+</body>
+</html>

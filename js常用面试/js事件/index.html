@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.box{
+			width:300px;
+			height: 300px;
+			background: pink;
+		}
+		.item{
+			width:200px;
+			height: 200px;
+			background: #ccc;
+		}
+		.banner{
+			width:100px;
+			height: 100px;
+			background: #f99;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="box">
+		<div class="item">
+			<div class="banner">
+				
+			</div>
+		</div>
+	</div> -->
+	<!-- <a href="javascript:;">跳转到百度</a> -->
+	<form>
+		<input type="text">
+		<input type="text">
+		<button>点击我跳转到百度</button>
+	</form>
+	<script>
+		// var box = document.getElementsByClassName('box')[0]
+		// var item = document.getElementsByClassName('item')[0]
+		// var banner = document.getElementsByClassName('banner')[0]
+		// box.onclick = function(event) {
+		// 	// event.stopPropagation()
+		// 	console.log('我是box')
+		// }
+		// item.onclick = function() {
+		// 	// event.stopPropagation()
+		// 	console.log('我是item')
+		// }
+		// banner.onclick = function() {
+		// 	// event.stopPropagation()
+		// 	console.log('我是banner')
+		// }
+		// box.onclick = function(event) {
+		// 	console.log(event.target) //event.target可以得到子级元素
+		// 	if(event.target === banner) {
+		// 		console.log('我是banner,我被父级元素的事件捕获')
+		// 	}
+		// 	if(event.target === item) {
+		// 		console.log('我是item,我被父级元素的事件捕获')	
+		// 	}
+		// }
+		var btn = document.getElementsByTagName('button')[0]
+		btn.onclick = function(event) {
+			console.log('a')
+			event.preventDefault() //阻止默认事件
+		}
+	</script>
+</body>
+</html>
