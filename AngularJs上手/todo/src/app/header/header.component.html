@@ -1,0 +1,22 @@
+<div class="box">
+  <h2>
+    Header
+  </h2>
+  <div>
+    <ul>
+      <li *ngFor="let hero of heroes" (click)="onSeclet(hero)" >
+        <span>
+          姓名:{{hero.name}}
+        </span>
+        序号:{{hero.id}}
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+
+
+<div class="banner">
+  <app-banner [hero]="selectedHero" ></app-banner>
+</div>

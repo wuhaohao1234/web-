@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>vue双向数据绑定</h2>
+        <input type="text" mv-model="msg">
+        <p mv-bind="msg"></p>
+    </div>
+    <script src="./MyVue.js"></script>
+    <script>
+        class Watcher {
+            constructor({ el, vm, uData, attr }) {
+                this.el = el;
+                this.vm = vm;
+                this.uData = uData;
+                this.attr = attr;
+                this.update();
+            }
+            update() {
+                this.el[this.attr] = this.vm.$data[this.uData];
+            }
+        }
+        class Vue {
+            constructor(options) {
+                this.$el = document.querySelector(options.el)
+                this.$data = options.data
+                this.$methods = options.methods
+
+                this.watchers = new Map()
+                this._observe(this.$data)
+                this._compile(this.$el)
+            }
+            _observe(obj){
+                for(let key in obj) {
+                    if(obj.hasOwnProperty(key)) {
+                        let value = obj[key]
+                        if(typeof value === 'object') {
+                            this._observe(value)
+                        }
+                        this.watchers.set(key,{ _directives:[]})
+                        let watchers = this.watchers.get(key)
+                        Object.defineProperty(this.$data,key,{
+                            get() {
+                                return value
+                            },
+                            set(newValue) {
+                                value = newValue
+                                for(let i = 0;i <watchers._directives.length;i ++) {
+                                    watchers._directives[i].update()
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+            _compile(el){
+                let _this = this
+                let nodes = el.children
+                for(let i = 0;i < nodes.length;i ++) {
+                    let node = nodes[i]
+                    if(node.children.length) {
+                        this._compile(node)
+                    }
+                    if(node.hasAttribute('mv-click')) {
+                        node.addEventListener('click',()=>{
+                            let method = this.getAttribute('mv-click');
+                            _this.$methods[method].call(_this.$data);
+                        })
+                    }
+                    if(node.hasAttribute('mv-model')&& (node.tagName === 'INPUT')) {
+                        let uData = node.getAttribute('mv-model');
+                        this.watchers.get(uData)._directives.push(new Watcher({
+                            el: node,
+                            vm: this,
+                            uData,
+                            attr: 'value'
+                        }));
+                        node.addEventListener('keyup', function () {
+                            _this.$data[uData] = this.value
+                        })
+                    }
+                    if (node.hasAttribute('mv-bind')) {
+                        // 获取绑定的属性
+                        var uData = node.getAttribute('mv-bind');
+                        //给属性增加一个watcher
+                        this.watchers.get(uData)._directives.push(new Watcher({
+                            el: node,
+                            vm: this,
+                            uData,
+                            attr: 'innerHTML'
+                        }));
+
+                    }
+                }
+            }
+        }
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'helloVue',
+            }
+        })
+    </script>
+</body>
+
+</html>

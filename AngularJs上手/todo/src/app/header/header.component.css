@@ -1,0 +1,25 @@
+.box{
+    background: #eee;
+    overflow: hidden;
+}
+li{
+    list-style: none;
+    background: rgb(228, 228, 80);
+    line-height: 30px;
+    color: #000000;
+    font-size: 24px;
+    width: 400px;
+    margin: 20px;
+    padding-left: 30px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    float: left;
+}
+li span{
+    width: 200px;
+    display: inline-block;
+    margin-right: 70px;
+    font-size: 18px;
+    color: rgb(136, 65, 17);
+    font-weight: bold;
+}

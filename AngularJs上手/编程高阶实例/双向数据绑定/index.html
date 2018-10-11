@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>vue双向数据绑定</h2>
+        <input type="text" mv-model="msg">
+        <p mv-bind="msg"></p>
+    </div>
+    <script src="./MyVue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'helloVue',
+                name: '吴昊'
+            }
+        })
+    </script>
+</body>
+
+</html>
