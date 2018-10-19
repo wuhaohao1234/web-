@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发布订阅模式</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" mv-model="message" >
+		<p mv-bind="message" ></p>
+		<button>点击</button>
+	</div>
+	<!-- <script src="Vue.js" ></script> -->
+	<script>
+		var dw = new Map()
+		dw.set(1,{_dire:[]})
+		console.log(dw.get(1))
+		// var obj = {
+		// 	msg:''
+		// }
+		// for(var key in obj) {
+		// 	var value = obj[key]
+		// 	Object.defineProperty(obj,key,{
+		// 		get:()=>{
+		// 			return value
+		// 		},
+		// 		set:(newvalue)=>{
+		// 			value = newvalue
+		// 			console.log(obj[key])
+		// 		}
+		// 	})
+		// }
+		
+		// new Vue({
+		// 	el:'#app',
+		// 	data:{
+		// 		message:'数据'
+		// 	}
+		// })
+	</script>
+</body>
+</html>
