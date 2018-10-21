@@ -1,15 +1,15 @@
 let api = require('./controllers/API.js')
 
 let address = (path,request,response) => {
-	
 	var Post = new RegExp('/post').test(path);
 	var Get = new RegExp('/get').test(path);
 	var Css = new RegExp('css').test(path);
 	var Img = new RegExp('images').test(path);
 	var Js = new RegExp('js').test(path);
-	var html = new RegExp('html').test(path);
-	// 匹配上传文件
-	var Demo = new RegExp('/main/server/data').test(path)
+	var html = new RegExp('html').test(path)
+	var data = new RegExp('data').test(path);
+
+	var RequestFileDBJson = new RegExp('RequestFileDBJson').test(path)
 	if(path == '/') {
 		api['index'](request,response)
 	}
@@ -36,17 +36,13 @@ let address = (path,request,response) => {
 	else if(Get)
 	{
 		api['get'](request,response,path);		
-	}
-	// 读取db.json文件信息
-	else if(path == '/message')
+	}else if(RequestFileDBJson)
 	{
-		api['message'](request,response,path);		
-	}
-	else if(Demo)
+		api['requestFileDBJson'](request,response,path);		
+	}else if(data)
 	{
-		path = path.replace('/main','.')
 		console.log(path)
-		api['data'](request,response,path)
+		api['data'](request,response,path);		
 	}
 }
 module.exports = address

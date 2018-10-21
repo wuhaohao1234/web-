@@ -1,11 +1,21 @@
 let fs = require('fs')
 // 判断路径
 let pathSrc = (path) => {
+
 	if(!path) {
-		return './view/index.html'
-	}else{
-		path = './view' + path
 		console.log(path)
+
+		return './view/index.html'
+	}else if(path.search('RequestFileDBJson') != -1) {
+		return './server/data/db.json'
+	}else if(path.search('data') != -1) {
+		path = './server'+path
+		console.log(path)
+		return path
+	}	
+	else{
+		console.log(path)
+		path = './view' + path
 		return path
 	}
 }
@@ -23,19 +33,6 @@ let getReq = (req,res,path,type)=>{
 		}
 	})
 }
-// 读取fs文件
-let getReqFs = (req,res,path,type)=>{
-	fs.readFile(path,(err,data)=>{
-		if(err) {
-
-			console.log('路径错误')
-		}else{
-			res.writeHead(200)
-			res.end(data)
-		}
-	})
-}
-
 module.exports = {
 	index:(req,res,path)=>{
 		var type = {'Content-Type':'text/html'};
@@ -57,20 +54,13 @@ module.exports = {
 		var type = {'Content-Type':'text/html'};
 		getReq(req,res,path,type);
 	},
-	message:(req,res,path)=>{
-		getReqFs(req,res,'./server/controllers/db.json')
+	// 第一次读取Json
+	requestFileDBJson:(req,res,path)=>{
+		var type = {'Content-Type':'text'};
+		getReq(req,res,path,type);	
 	},
 	data:(req,res,path)=>{
-		getReqFs(req,res,path+'.html')
-	},
+		var type = {'Content-Type':'text/html'};
+		getReq(req,res,path,type);	
+	}
 }
-
-// fs读取文件
-
-// fs.readFile('./server/controllers/db.json',(err,data)=>{
-// 	if(err) {
-// 		console.log(err)
-// 	}else{
-// 		console.log(data)
-// 	}
-// })

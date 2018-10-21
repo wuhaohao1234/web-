@@ -1,0 +1,17 @@
+{
+	"File01":{
+		"name":"第一个文件",
+		"src":"data/index.html",
+		"commit":"文件注释"
+	},
+	"File02":{
+		"name":"第一个文件",
+		"src":"当前目录下/的文件名",
+		"commit":"文件注释"
+	},
+	"Folder":{
+		"name":"第一个文件夹",
+		"src":"data/Fileorder/db.json",
+		"commit":"文件夹注释"
+	}
+}

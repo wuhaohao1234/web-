@@ -2,13 +2,14 @@ let http = require('http')
 let url = require('url')
 
 let address = require('./server/address.js')
-
+//处理请求
 let onRequest =(request,response) => {
 	if(request.url !== '/favicon.ico') {
 
 		let path = url.parse(request.url).pathname;
-		// 地址输入判断引擎
 		address(path,request,response)	
+	}else{
+		response.end()
 	}
 }
 
