@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文件可视化管理系统</title>
+	<link rel="stylesheet" href="../style/index.css">
+</head>
+<body>
+	<!-- db.json包含文件信息，地址，所有文件的根目录为server/data -->
+	<div>
+		上传文件
+			<!-- 
+				动态获取已知的文件地址,默认为空
+				用户可自定义存储文件夹的名字，假设没有定义则创建在默认目录message
+				用户定义文件夹名字需要与db.json中的地址比较，不能重复
+				用户地址正确，则需要添加文件说明，默认为题目名字
+				用户上传文件，后台文件存储在相应目录
+				
+				强制用户只能上传js,css,html,txt,md
+
+				这里希望后台渲染
+				首先读取文件里面的内容，动态渲染为html文件
+				前台通过地址，读取文件信息
+			 -->
+		
+		<!-- 这里包括文件标题，文件描述，上传目录地址 -->
+	</div>
+		文件查阅
+	<div class="select" >
+		<!-- <ul>
+			<li></li>
+		</ul> -->
+	</div>
+	<script src="../js/jqueryWu.js" ></script>
+	<script>
+		var select = $('.select')[0]
+		$.ajax({
+			type:'get',
+			url:'http://localhost:4399/message',
+			success:(data)=>{
+				var jsonData = JSON.parse(data)
+				for(var i in jsonData) {
+					if(jsonData[i]) {
+						var name = jsonData[i]['name']
+						var src = jsonData[i]['src']
+						var message = jsonData[i]['message']
+						select.innerHTML += `
+							<ul>
+								<li>
+									<a target="_blank" href=${src} >
+										<span>
+											${name}
+										</span>
+										${message}
+									</a>
+								</li>
+							</ul>
+						`
+					}
+					
+				}
+			}
+		})
+	</script>
+</body>
+</html>
