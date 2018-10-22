@@ -1,0 +1,67 @@
+*{
+	margin:0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.container{
+	width:1200px;
+	margin: 0 auto;
+}
+.center{
+	padding: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.left{
+	float: left;
+}
+.right{
+	float:right;
+}
+body{
+	background-color: rgba(11, 200, 200, 0.1);
+	font-family: SimSun Times;
+	color: #111;
+}
+li h3,li button ,li p{
+	display: inline-block;
+	flex-direction: column;
+}
+.item{
+	display: flex;
+	justify-content:space-around;
+	margin: 20px;
+}
+.item h3 , .item p{
+	width: 100px;
+	text-align: center;
+	overflow: hidden;
+}
+
+button {
+	background-color: #1B9AF7;
+    border-color: #1B9AF7;
+    border-radius: 200px;
+    font-size: 12px;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    line-height: 30px;
+    padding: 0 30px;
+    opacity: .7;
+}
+button:hover{
+	opacity: 1;
+	box-shadow: 0 0 10px #1B9AF7;
+}
+.header{
+	position: relative;
+	height: 60px;
+	overflow: hidden;
+}

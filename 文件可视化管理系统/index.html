@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文件可视化管理系统</title>
+	<link rel="stylesheet" href="./css/default.css">
+	<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+	<div class="container">
+		<h2 class="center" >文件可视化管理系统</h2>
+		<div class="header">
+			<form class="form_file active" action="">
+				<span class="file_name" >输入文件名:</span>
+				<input type="text" placeholder="文件可视化管理系统">
+				<span class="file_name" >选择文件目录:</span>
+				<button class="main_file" >主目录</button>
+				<span class="file_name" >文件描述:</span>
+				<input type="text" placeholder="可选" >
+				<button class="confirm" >确认</button>
+			</form>
+			<form class="form_file" action="">
+				<button class="main_file" >主目录</button>
+				<button>目录B</button>
+				<button>目录C</button>
+				<span class="file_name" >新建目录:</span>
+				<input type="text" placeholder="目录名称" >
+				<button>添加</button>
+			</form>
+		</div>
+		<div class="selector">
+			<ul>
+				<li class="item" >
+					<h3>我是主目录</h3>
+					<button>打开文件</button>
+					<p>我是文件描述</p>
+					<button class="danger" >删除文件</button>
+				</li>
+				<li class="item" >
+					<h3>我是目录B</h3>
+					<button>打开文件</button>
+					<p>我是文件描述</p>
+					<button class="danger" >删除文件</button>
+				</li>
+				<li class="item" >
+					<h3>我是目录C</h3>
+					<button>打开文件</button>
+					<p>我是文件描述</p>
+					<button class="danger" >删除文件</button>
+				</li>
+				<li class="item" >
+					<h3>我是文件A</h3>
+					<button>打开文件</button>
+					<p>我是文件描述</p>
+					<button class="danger" >删除文件</button>
+				</li>
+				<li class="item" >
+					<h3>我是文件B</h3>
+					<button>打开文件</button>
+					<p>我是文件描述</p>
+					<button class="danger" >删除文件</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="./js/index.js" ></script>
+</body>
+</html>
