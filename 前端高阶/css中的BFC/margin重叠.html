@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>margin重叠</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.banner{
+			margin: 100px;
+			height: 100px;
+			background: pink;
+			margin: 100px 0;
+		}
+		.box{
+			overflow: hidden;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="banner">1</div>
+	<div class="banner">2发生边距重叠</div>
+	<div class="banner">3</div> -->
+
+	<div class="banner">1</div>
+	<div class="box">
+		<div class="banner">2不会发生边距重叠</div>
+	</div>
+	<div class="banner">3</div>
+</body>
+</html>

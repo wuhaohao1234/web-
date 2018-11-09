@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>margin传递</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		/*在没有写overflow:hidden的时候，没有触发bfc,box高度与banner高度相等，但是发生边距传递*/
+		.box{
+			background: #ccc;
+			overflow: hidden;
+		}
+		/*加入overflow:hidden。触发bfc，box高度变为300px*/
+		.banner{
+			height: 100px;
+			background: pink;
+			margin: 100px 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="banner"></div>
+	</div>
+</body>
+</html>
