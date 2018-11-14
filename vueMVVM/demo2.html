@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p></p>
+        <input type="text">
+    </div>
+    <script>
+        var dom = nodeToFragement(document.getElementById('app'))
+        function nodeToFragement(node) {
+            //可生成一个虚拟的dom
+            var flag = document.createDocumentFragment()
+            var child ;
+            while(child = node.firstChild) {
+                flag.appendChild(child)
+            }
+            return flag
+        }
+        document.getElementById('app').appendChild(dom)
+    </script>
+</body>
+</html>

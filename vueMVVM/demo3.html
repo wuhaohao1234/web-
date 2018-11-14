@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="a" >
+    <span id="b" ></span>
+    <script>
+        var obj = {}
+        var value = 'hello '
+        Object.defineProperty(obj,'name',{
+            get:()=>{
+                return value
+            },
+            set:(newValue)=>{
+                document.getElementById('b').innerHTML = newValue
+                return value
+            }
+        })
+        document.getElementById('a').addEventListener('input',(e)=>{
+            obj.name = e.target.value
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vueMVVM</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="text" >
+        {{text}}
+    </div>
+    <script src="vue.js" ></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                text:'Hello Vue'
+            }
+        })
+    </script>
+</body>
+</html>

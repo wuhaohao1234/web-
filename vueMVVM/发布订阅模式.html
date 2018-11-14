@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布订阅模式</title>
+</head>
+<body>
+    <script>
+        //发布者
+        var pub = {
+            publish:function() {
+                dep.notify()
+            }
+        }
+        
+        var sub1 = {
+            upDate:function() {
+                console.log(1)
+            }
+        }
+        var sub2 = {
+            upDate:function() {
+                console.log(2)
+            }
+        }
+        var sub3 = {
+            upDate:function() {
+                console.log(3)
+            }
+        }
+        //订阅者
+        function Dep() {
+            this.subs = [sub1,sub2,sub3]
+        }
+        
+        Dep.prototype.notify = function() {
+            this.subs.forEach(function(sub){
+                sub.upDate()
+            })
+        }
+        var dep = new Dep()
+        pub.publish()
+    </script>
+</body>
+</html>

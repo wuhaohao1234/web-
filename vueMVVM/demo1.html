@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object.defineProperty</title>
+</head>
+<body>
+    <h1>Object.defineProperty</h1>
+    <script>
+        var obj = {}
+        var value = 'hello'
+        Object.defineProperty(obj,'name',{
+            get:()=>{
+                console.log('我获取到值')
+                return value
+            },
+            set:(newValue)=>{
+                console.log('我被设置新的值')
+                value = newValue
+                return value
+            }
+        })
+        obj.name = '我是新的值'
+        console.log(obj.name)
+    </script>
+</body>
+</html>
