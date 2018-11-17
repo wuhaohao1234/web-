@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数记忆</title>
+</head>
+<body>
+    <input type="text">
+    <button>点击</button>
+    <hr>
+    <h3>
+        我是input框里面的内容
+    </h3>
+    <script>
+        var btn = document.querySelector('button')
+        var Inp = document.querySelector('input')
+        var hTxt = document.querySelector('h3')
+        
+        var arrTxt = []
+        btn.addEventListener('click',function(){
+            for(var i = 0;i<arrTxt.length;i ++) {
+                if(arrTxt[i] === Inp.value) {
+                    console.log('因为是相同的，所以不会添加')
+                    return
+                }
+            }
+            arrTxt.push(Inp.value)
+            renHTxt(Inp.value)
+        })
+        function renHTxt(val) {
+            console.log('我被执行')
+            hTxt.innerHTML += val
+        }
+    </script>
+</body>
+</html>
