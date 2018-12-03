@@ -1,0 +1,105 @@
+http协议:
+
+基于tcp/ip层
+
+超文本传输??协议:应用层协议
+c/s  客户端/服务器
+
+request请求
+
+reponse响应
+
+客户端发出请求
+get/post/delete
+，服务器接收并给出响应
+
+打开一个TCP连接
+
+客户端向服务器发送一个HTTP报文
+
+GET / HTTP/1.1
+Host: developer.mozilla.org
+Accept-Language: fr
+
+服务器返回一个报文信息
+读取服务端返回的报文信息：
+
+HTTP/1.1 200 OK
+Date: Sat, 09 Oct 2010 14:28:02 GMT
+Server: Apache
+Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
+ETag: "51142bc1-7449-479b075b2891b"
+Accept-Ranges: bytes
+Content-Length: 29769
+Content-Type: text/html/text/css/text/javascript/图片/视频
+
+method请求方式get/post/delete
+
+path:请求地址https://www.baidu.com
+
+http的版本:http/1.0
+
+headers头信息
+
+
+<!DOCTYPE html... (here comes the 29769 bytes of the requested web page)
+
+
+响应:
+
+版本1.1
+
+请求是否成功?200成功的，404没有找到304
+
+第一次向服务器请求数据:请求一张图片。
+缓存这张图片
+第二次再访问这张图片:走的是缓存
+ 
+get请求:可以走缓存的
+
+禁止进行缓存
+
+
+客户端发送请求，服务器给出报文
+
+
+Cache-Control: no-store
+Cache-Control: no-cache, no-store, must-revalidate
+头信息里面的内容
+告诉客户端我的这些玩意你不用缓存
+
+强制确认缓存
+
+
+Cache-Control: no-cache
+
+
+缓存过期机制
+
+Cache-Control: max-age=31536000
+
+HTTP cookies
+
+服务器发送到用户浏览器并保存在本地的一小块数据
+
+
+它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。
+
+
+服务器使用Set-Cookie响应头部向用户代理（一般是浏览器）发送Cookie信息。一个简单的Cookie可能像这样：
+
+GET /sample_page.html HTTP/1.1
+Host: www.example.org
+
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+
+
+Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
+
+
+
+
+
+
+
+
